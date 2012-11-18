@@ -1,0 +1,11 @@
+{
+  "name": "failover-proxy",
+  "author": "Maciej Małecki <me@mmalecki.com>",
+  "version": "0.0.0",
+  "devDependencies": {
+    "assert-called": "0.1.x"
+  },
+  "scripts": {
+    "test": "test/run"
+  }
+}
