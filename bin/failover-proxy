@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+var fs = require('fs'),
+    failoverProxy = require('../');
+
+function formatHost(host) {
+  return host.host + ':' + host.port;
+}
+
+var options = process.argv[2],
+    proxy;
+
+if (!options) {
+  console.error('Usage: failover-proxy options.json');
+  process.exit(1);
+}
+
+options = JSON.parse(fs.readFileSync(options));
+
+proxy = failoverProxy(options);
+
+proxy.listen(options.port, function () {
+  console.log('failover-proxy listening on ' + proxy.address().port);
+});
+
+proxy.on('cycle', function (badHost, newHost) {
+  console.log('Cycling: ' + formatHost(badHost) + ' -> ' + formatHost(newHost));
+});
