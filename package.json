@@ -6,6 +6,10 @@
   "devDependencies": {
     "assert-called": "0.1.x"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mmalecki/failover-proxy.git"
+  },
   "scripts": {
     "test": "test/run"
   }
