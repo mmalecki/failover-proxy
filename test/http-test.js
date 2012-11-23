@@ -53,6 +53,10 @@ var outgoing = http.request({
   headers: {
     'content-length': fs.statSync(filePath).size
   }
+}, cb(function (res) {
+  assert.equal(res.statusCode, 200);
+})).on('error', function (err) {
+  throw err;
 });
 fs.createReadStream(filePath).pipe(outgoing);
 
